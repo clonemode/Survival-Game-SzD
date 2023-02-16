@@ -4,93 +4,53 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] Transform playerCamera;
-    [SerializeField][Range(0.0f, 0.5f)] float mouseSmoothTime = 0.03f;
-    [SerializeField] bool cursorLock = true;
-    [SerializeField] float mouseSensitivity = 3.5f;
-    [SerializeField] float walkSpeed = 6.0f;
-    [SerializeField] float sprintSpeed = 9.0f;
-    [SerializeField][Range(0.0f, 0.5f)] float moveSmoothTime = 0.3f;
-    [SerializeField] float gravity = -30f;
-    [SerializeField] Transform groundCheck;
-    [SerializeField] LayerMask ground;
+    public CharacterController controller;
 
-    public float jumpHeight = 6f;
-    float velocityY;
-    bool isGrounded;
+    public float gravity = -9.81f * 2;
+    public float jumpHeight = 3f;
+    public float walkSpeed = 6.0f;
+    public float sprintSpeed = 9.0f;
     float moveSpeed;
 
-    float cameraCap;
-    Vector2 currentMouseDelta;
-    Vector2 currentMouseDeltaVelocity;
+    public Transform groundCheck;
+    public float groundDistance = 0.4f;
+    public LayerMask groundMask;
 
-    CharacterController controller;
-    Vector2 currentDir;
-    Vector2 currentDirVelocity;
     Vector3 velocity;
 
-    void Start()
-    {
-        controller = GetComponent<CharacterController>();
+    bool isGrounded;
 
-        if (cursorLock)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = true;
-        }
-    }
-
+    // Update is called once per frame
     void Update()
     {
-        UpdateMouse();
-        UpdateMove();
-    }
+        //checking if we hit the ground to reset our falling velocity, otherwise we will fall faster the next time
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-    void UpdateMouse()
-    {
-        Vector2 targetMouseDelta = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        }
 
-        currentMouseDelta = Vector2.SmoothDamp(currentMouseDelta, targetMouseDelta, ref currentMouseDeltaVelocity, mouseSmoothTime);
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
 
-        cameraCap -= currentMouseDelta.y * mouseSensitivity;
+        //right is the red Axis, foward is the blue axis
+        Vector3 move = transform.right * x + transform.forward * z;
 
-        cameraCap = Mathf.Clamp(cameraCap, -90.0f, 90.0f);
+        controller.Move(move * moveSpeed * Time.deltaTime);
 
-        playerCamera.localEulerAngles = Vector3.right * cameraCap;
+        //check if the player is on the ground so he can jump
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            //the equation for jumping
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
 
-        transform.Rotate(Vector3.up * currentMouseDelta.x * mouseSensitivity);
-    }
-
-    void UpdateMove()
-    {
-        isGrounded = Physics.CheckSphere(groundCheck.position, 0.2f, ground);
-
-        Vector2 targetDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        targetDir.Normalize();
-
-        currentDir = Vector2.SmoothDamp(currentDir, targetDir, ref currentDirVelocity, moveSmoothTime);
-
-        velocityY += gravity * 2f * Time.deltaTime;
-
-        Vector3 velocity = (transform.forward * currentDir.y + transform.right * currentDir.x) * moveSpeed + Vector3.up * velocityY;
+        velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
 
-        InputMove();
-
-        if (isGrounded! && controller.velocity.y < -1f)
-        {
-            velocityY = -8f;
-        }
-    }
-    void InputMove()
-    {
-        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
-        {
-            velocityY = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
-
-        else if (isGrounded && Input.GetKey(KeyCode.LeftShift))
+        if (isGrounded && Input.GetKey(KeyCode.LeftShift))
         {
             moveSpeed = sprintSpeed;
         }
@@ -98,6 +58,5 @@ public class PlayerMovement : MonoBehaviour
         {
             moveSpeed = walkSpeed;
         }
-
     }
 }
