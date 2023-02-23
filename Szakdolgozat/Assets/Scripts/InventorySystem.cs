@@ -38,7 +38,6 @@ public class InventorySystem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I) && !isOpen)
         {
 
-            Debug.Log("i is pressed");
             inventoryScreenUI.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             isOpen = true;
@@ -47,7 +46,10 @@ public class InventorySystem : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.I) && isOpen)
         {
             inventoryScreenUI.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
+            if (!CraftingSystem.Instance.isOpen)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+            }
             isOpen = false;
         }
     }
@@ -68,8 +70,41 @@ public class InventorySystem : MonoBehaviour
         itemToAdd = Instantiate(Resources.Load<GameObject>(itemName), whatSlotToEquip.transform.position, whatSlotToEquip.transform.rotation);
         itemToAdd.transform.SetParent(whatSlotToEquip.transform);
         itemList.Add(itemName);
-        
     }
+    public void RemoveItem(string nameToRemove, int amountToRemove)
+    {
+        int counter = amountToRemove;
+        for (var i = slotList.Count-1; i >= 0; i++)
+        {
+            if (slotList[i].transform.childCount > 0)
+            {
+                if (slotList[i].transform.GetChild(0).name == nameToRemove + "(Clone)" && counter !=0)
+                {
+                    Destroy(slotList[i].transform.GetChild(0).gameObject);
+
+                    counter -= 1;
+                }
+            }
+        }
+    }
+
+    internal void ReCalculateList()
+    {
+        itemList.Clear();
+
+        foreach(GameObject slot in slotList)
+        {
+            if (slot.transform.childCount > 0)
+            {
+                itemList.Add();
+            }
+        }
+    }
+
+    //other version removeItem
+    /*
+     
+     */
 
     private GameObject FindNextEmptySlot()
     {
