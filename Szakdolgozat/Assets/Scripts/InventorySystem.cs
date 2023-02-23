@@ -74,7 +74,7 @@ public class InventorySystem : MonoBehaviour
     public void RemoveItem(string nameToRemove, int amountToRemove)
     {
         int counter = amountToRemove;
-        for (var i = slotList.Count-1; i >= 0; i++)
+        for (var i = slotList.Count-1; i >= 0; i--)
         {
             if (slotList[i].transform.childCount > 0)
             {
@@ -88,6 +88,21 @@ public class InventorySystem : MonoBehaviour
         }
     }
 
+    //other version removeItem
+    /*
+    public void RemoveItem(string nameToRemove, int amountToRemove) 
+    {
+        var itemsToRemove = slotList
+        .Where(s => s.transform.childCount > 0 && s.transform.GetChild(0).name == nameToRemove + "(Clone)")
+        .Take(amountToRemove);
+
+        foreach (var item in itemsToRemove) 
+        {
+            Destroy(item.transform.GetChild(0).gameObject);
+        }
+    }
+    */
+
     internal void ReCalculateList()
     {
         itemList.Clear();
@@ -96,15 +111,14 @@ public class InventorySystem : MonoBehaviour
         {
             if (slot.transform.childCount > 0)
             {
-                itemList.Add();
+                string name = slot.transform.GetChild(0).name; //Stone (Clone)
+                string str2 = "(Clone)";
+                string result = name.Replace(str2,"");
+
+                itemList.Add(result);
             }
         }
     }
-
-    //other version removeItem
-    /*
-     
-     */
 
     private GameObject FindNextEmptySlot()
     {
