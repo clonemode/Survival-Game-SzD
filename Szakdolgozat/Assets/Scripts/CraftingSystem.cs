@@ -56,7 +56,6 @@ public class CraftingSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RefreshNeededItem();
 
         if (Input.GetKeyDown(KeyCode.C) && !isOpen)
         {
@@ -84,6 +83,8 @@ public class CraftingSystem : MonoBehaviour
 
     private void CraftAnyItem(ItemBlueprint blueprintToCraft)
     {
+        
+
         //remove resources from inventory
         if (blueprintToCraft.numOfRequirements == 1)
         {
@@ -98,15 +99,12 @@ public class CraftingSystem : MonoBehaviour
         //add item to inventory
         InventorySystem.Instance.AddToInventory(blueprintToCraft.itemName);
 
-
         //refresh list
-        //StartCoroutine(calculate());
-        InventorySystem.Instance.ReCalculateList();
+        StartCoroutine(calculate());
 
-        RefreshNeededItem();
     }
 
-    private void RefreshNeededItem()
+    public void RefreshNeededItem()
     {
         int stone_count = 0;
         int stick_count = 0;
@@ -143,7 +141,8 @@ public class CraftingSystem : MonoBehaviour
 
     public IEnumerator calculate()
     {
-        yield return new WaitForSeconds(1f);
+        yield return 0;
         InventorySystem.Instance.ReCalculateList();
+        RefreshNeededItem();
     }
 }
