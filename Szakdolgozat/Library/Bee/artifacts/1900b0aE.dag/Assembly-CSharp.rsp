@@ -357,6 +357,7 @@
 "Assets/Scripts/CaloriesBar.cs"
 "Assets/Scripts/CraftingSystem.cs"
 "Assets/Scripts/DragDrop.cs"
+"Assets/Scripts/EquipSystem.cs"
 "Assets/Scripts/HealthBar.cs"
 "Assets/Scripts/HydrationBar.cs"
 "Assets/Scripts/InteractableObject.cs"

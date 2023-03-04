@@ -2237,7 +2237,7 @@ GameObject:
   - component: {fileID: 388242974}
   m_Layer: 5
   m_Name: QuickSlot6
-  m_TagString: Slot
+  m_TagString: QuickSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2542,7 +2542,7 @@ GameObject:
   - component: {fileID: 417791825}
   m_Layer: 5
   m_Name: QuickSlot4
-  m_TagString: Slot
+  m_TagString: QuickSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4031,7 +4031,7 @@ GameObject:
   - component: {fileID: 685535098}
   - component: {fileID: 685535097}
   m_Layer: 5
-  m_Name: number
+  m_Name: number7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4261,7 +4261,7 @@ GameObject:
   - component: {fileID: 727637890}
   m_Layer: 5
   m_Name: QuickSlot1
-  m_TagString: Slot
+  m_TagString: QuickSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6823,6 +6823,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c11ec7f77e23ffa4192f0273e3e809bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &830606440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 830606441}
+  - component: {fileID: 830606442}
+  m_Layer: 0
+  m_Name: EquipSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &830606441
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830606440}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1700295386}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &830606442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830606440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a1005ca419cbd94cb88c59c34eb0176, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quickSlotsPanel: {fileID: 2015447959}
+  quickSlotsList: []
+  itemList: []
+  numbersHolder: {fileID: 1939239478}
+  selectedNumber: -1
+  selectedItem: {fileID: 0}
 --- !u!1 &840222604
 GameObject:
   m_ObjectHideFlags: 0
@@ -7658,7 +7708,7 @@ GameObject:
   - component: {fileID: 915709110}
   - component: {fileID: 915709109}
   m_Layer: 5
-  m_Name: number
+  m_Name: number3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7735,7 +7785,7 @@ GameObject:
   - component: {fileID: 926772906}
   - component: {fileID: 926772905}
   m_Layer: 5
-  m_Name: number
+  m_Name: number4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8459,7 +8509,7 @@ GameObject:
   - component: {fileID: 1107437011}
   m_Layer: 5
   m_Name: QuickSlot2
-  m_TagString: Slot
+  m_TagString: QuickSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9436,7 +9486,7 @@ GameObject:
   - component: {fileID: 1219571304}
   m_Layer: 5
   m_Name: QuickSlot7
-  m_TagString: Slot
+  m_TagString: QuickSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10530,7 +10580,7 @@ GameObject:
   - component: {fileID: 1348557421}
   - component: {fileID: 1348557420}
   m_Layer: 5
-  m_Name: number
+  m_Name: number2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11652,7 +11702,7 @@ GameObject:
   - component: {fileID: 1548248376}
   - component: {fileID: 1548248375}
   m_Layer: 5
-  m_Name: number
+  m_Name: number6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12536,6 +12586,7 @@ Transform:
   - {fileID: 212473115}
   - {fileID: 2039496908}
   - {fileID: 1374094687}
+  - {fileID: 830606441}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13048,7 +13099,7 @@ GameObject:
   - component: {fileID: 1754636795}
   m_Layer: 5
   m_Name: QuickSlot5
-  m_TagString: Slot
+  m_TagString: QuickSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13465,7 +13516,7 @@ GameObject:
   - component: {fileID: 1786811538}
   m_Layer: 5
   m_Name: QuickSlot3
-  m_TagString: Slot
+  m_TagString: QuickSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14446,7 +14497,7 @@ GameObject:
   - component: {fileID: 1907784153}
   - component: {fileID: 1907784152}
   m_Layer: 5
-  m_Name: number
+  m_Name: number1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14891,7 +14942,7 @@ GameObject:
   - component: {fileID: 2011894783}
   - component: {fileID: 2011894782}
   m_Layer: 5
-  m_Name: number
+  m_Name: number5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
