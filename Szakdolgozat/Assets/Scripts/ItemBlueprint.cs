@@ -21,6 +21,4 @@ public class ItemBlueprint
         Req2amount = R2num;
     }
 
-
-
 }

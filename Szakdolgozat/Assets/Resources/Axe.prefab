@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7598436531399216220}
   - component: {fileID: 1793152240765441376}
   - component: {fileID: 1380925478507451129}
+  - component: {fileID: 3187731067253895204}
   - component: {fileID: 8252705391723276922}
   - component: {fileID: 9193088240913134166}
   m_Layer: 5
@@ -78,6 +79,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3187731067253895204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4918058338955898718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9095dfd2dad7ec54fb15edd7085c735b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTrashable: 0
+  thisName: Axe
+  thisDescription: ez egy balta
+  thisFunctionality: "F\xE1t tudsz vele v\xE1gni"
+  isConsumable: 0
+  healthEffect: 0
+  caloriesEffect: 0
+  hydrationEffect: 0
 --- !u!114 &8252705391723276922
 MonoBehaviour:
   m_ObjectHideFlags: 0

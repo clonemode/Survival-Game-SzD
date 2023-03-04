@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 355755459001064318}
   - component: {fileID: 8466338518875619906}
   - component: {fileID: 9130762470816073179}
+  - component: {fileID: 8302997726617615578}
   - component: {fileID: 2241538779851603288}
   - component: {fileID: 1299461650859844980}
   m_Layer: 5
@@ -78,6 +79,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8302997726617615578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3016427070177802364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9095dfd2dad7ec54fb15edd7085c735b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTrashable: 1
+  thisName: Bot
+  thisDescription: Szimpla bot
+  thisFunctionality: "egyszer\u0171 bot"
+  isConsumable: 0
+  healthEffect: 0
+  caloriesEffect: 0
+  hydrationEffect: 0
 --- !u!114 &2241538779851603288
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4764341288154904194}
   - component: {fileID: 3715408783641472958}
   - component: {fileID: 4055296348728911911}
+  - component: {fileID: 7384004615276771957}
   - component: {fileID: 6479053930210267300}
   - component: {fileID: 6122977810310449288}
   m_Layer: 5
@@ -78,6 +79,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7384004615276771957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8011115303457576320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9095dfd2dad7ec54fb15edd7085c735b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTrashable: 1
+  thisName: "K\u0151"
+  thisDescription: "Ez egy egyszer\u0171 k\u0151"
+  thisFunctionality: "Hozz\xE1 tudod v\xE1gni valakihez"
+  isConsumable: 0
+  healthEffect: 0
+  caloriesEffect: 0
+  hydrationEffect: 0
 --- !u!114 &6479053930210267300
 MonoBehaviour:
   m_ObjectHideFlags: 0
