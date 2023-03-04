@@ -9,6 +9,7 @@ public class SelectionManager : MonoBehaviour
 
     public GameObject interaction_Info_UI;
     public GameObject selectedObject;
+    public Image Crosshair;
     Text interaction_text;
     public bool onTarget;
 
@@ -40,7 +41,7 @@ public class SelectionManager : MonoBehaviour
 
             InteractableObject interactable = selectionTransform.GetComponent<InteractableObject>();
 
-            if (interactable && interactable.playerInRange && !InventorySystem.Instance.isOpen)
+            if (interactable && interactable.playerInRange && !InventorySystem.Instance.isOpen && !CraftingSystem.Instance.isOpen)
             {
                 onTarget = true;
                 selectedObject = interactable.gameObject;
@@ -52,7 +53,6 @@ public class SelectionManager : MonoBehaviour
                 onTarget = false;
                 interaction_Info_UI.SetActive(false);
             }
-
         }
         else
         {

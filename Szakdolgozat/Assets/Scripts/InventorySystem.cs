@@ -40,25 +40,30 @@ public class InventorySystem : MonoBehaviour
     {
         isOpen = false;
         PopulateSlotList();
+        Cursor.visible = false;
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I) && !isOpen)
+        if (Input.GetKeyDown(KeyCode.V) && !isOpen)
         {
-
             inventoryScreenUI.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             isOpen = true;
-
+            SelectionManager.Instance.Crosshair.gameObject.SetActive(false);
         }
-        else if (Input.GetKeyDown(KeyCode.I) && isOpen)
+        else if (Input.GetKeyDown(KeyCode.V) && isOpen)
         {
             inventoryScreenUI.SetActive(false);
             if (!CraftingSystem.Instance.isOpen)
             {
                 Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                SelectionManager.Instance.Crosshair.gameObject.SetActive(false);
             }
             isOpen = false;
+            SelectionManager.Instance.Crosshair.gameObject.SetActive(true);
+            //TODO BEZ¡R¡S KINYIT€¡S
         }
     }
     private void PopulateSlotList()
@@ -174,7 +179,6 @@ public class InventorySystem : MonoBehaviour
         pickupAlert.SetActive(true);
 
         pickupName.text = itemName;
-        pickupImage.sprite = itemSprite;
-         
+        pickupImage.sprite = itemSprite;  
     }
 }
