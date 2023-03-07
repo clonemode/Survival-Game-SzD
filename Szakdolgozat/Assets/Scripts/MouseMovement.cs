@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MouseMovement : MonoBehaviour
 {
-
     public float mouseSensitivity = 100f;
     private GameObject playerCamera;
 

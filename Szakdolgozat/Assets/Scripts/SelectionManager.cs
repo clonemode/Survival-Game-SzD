@@ -12,7 +12,7 @@ public class SelectionManager : MonoBehaviour
     public Image Crosshair;
     Text interaction_text;
     public bool onTarget;
-
+    public bool handIsVisible;
 
     private void Start()
     {
@@ -47,11 +47,13 @@ public class SelectionManager : MonoBehaviour
                 selectedObject = interactable.gameObject;
                 interaction_text.text = interactable.GetItemName();
                 interaction_Info_UI.SetActive(true);
+                handIsVisible = true;
             }
             else
             {
                 onTarget = false;
                 interaction_Info_UI.SetActive(false);
+                handIsVisible = false;
             }
         }
         else
