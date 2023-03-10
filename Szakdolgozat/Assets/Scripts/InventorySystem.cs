@@ -15,14 +15,13 @@ public class InventorySystem : MonoBehaviour
     private GameObject itemToAdd;
     private GameObject whatSlotToEquip;
     public bool isOpen;
-    //public bool isFull;
-
 
 
     //Pickup PopUp
     public GameObject pickupAlert;
     public Text pickupName;
     public Image pickupImage;
+    public Sprite backpack;
 
     private void Awake()
     {
@@ -62,9 +61,10 @@ public class InventorySystem : MonoBehaviour
                 SelectionManager.Instance.Crosshair.gameObject.SetActive(false);
             }
             isOpen = false;
-            SelectionManager.Instance.Crosshair.gameObject.SetActive(true);
-            //TODO BEZ¡R¡S KINYIT€¡S
+            SelectionManager.Instance.Crosshair.gameObject.SetActive(false);
         }
+        SelectionManager.Instance.Crosshair.gameObject.SetActive(true);
+
     }
     private void PopulateSlotList()
     {
@@ -174,11 +174,18 @@ public class InventorySystem : MonoBehaviour
             return false;
         }
     }
-    private void TriggerPickupPopUp(string itemName, Sprite itemSprite)
+    public void TriggerPickupPopUp(string itemName, Sprite itemSprite)
     {
         pickupAlert.SetActive(true);
-
+     
         pickupName.text = itemName;
-        pickupImage.sprite = itemSprite;  
+        pickupImage.sprite = itemSprite;
+
+        StartCoroutine(DisablePickupopUp());
+    }
+    public IEnumerator DisablePickupopUp()
+    {
+        yield return new WaitForSeconds(5);
+        pickupAlert.SetActive(false);
     }
 }

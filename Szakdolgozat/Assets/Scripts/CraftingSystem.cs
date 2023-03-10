@@ -61,8 +61,8 @@ public class CraftingSystem : MonoBehaviour
             craftingScreenUI.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            SelectionManager.Instance.Crosshair.gameObject.SetActive(false);
             isOpen = true;
+            SelectionManager.Instance.Crosshair.gameObject.SetActive(false);
         }
         else if (Input.GetKeyDown(KeyCode.C) && isOpen)
         {
@@ -75,8 +75,9 @@ public class CraftingSystem : MonoBehaviour
                 SelectionManager.Instance.Crosshair.gameObject.SetActive(false);
             }
             isOpen = false;
-            SelectionManager.Instance.Crosshair.gameObject.SetActive(true);
+            SelectionManager.Instance.Crosshair.gameObject.SetActive(false);
         }
+        SelectionManager.Instance.Crosshair.gameObject.SetActive(true);
     }
     private void OpenToolsCategory()
     {

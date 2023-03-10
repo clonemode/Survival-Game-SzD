@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InteractableObject : MonoBehaviour
 {
@@ -36,11 +37,12 @@ public class InteractableObject : MonoBehaviour
             {
                 InventorySystem.Instance.AddToInventory(ItemName);
                 Destroy(gameObject);
-                Debug.Log("pick up item");
             }
             else
             {
-                Debug.Log("Inventory is full");
+                string inventoryIsFull = InventorySystem.Instance.pickupName.text = "Inventory is full!";
+                Sprite backpackSprite = InventorySystem.Instance.pickupImage.sprite = InventorySystem.Instance.backpack;
+                InventorySystem.Instance.TriggerPickupPopUp(inventoryIsFull, backpackSprite);
             }
         }    
     }
