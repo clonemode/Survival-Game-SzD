@@ -64,7 +64,6 @@ public class InventorySystem : MonoBehaviour
             SelectionManager.Instance.Crosshair.gameObject.SetActive(false);
         }
         SelectionManager.Instance.Crosshair.gameObject.SetActive(true);
-
     }
     private void PopulateSlotList()
     {
@@ -153,19 +152,19 @@ public class InventorySystem : MonoBehaviour
         return new GameObject();
     }
 
-    public bool CheckIfFull()
+    public bool CheckSlotAvailable(int emptyNeeded)
     {
-        int counter = 0;
+        int emptySlot = 0;
 
         foreach (GameObject slot in slotList)
         {
-            if (slot.transform.childCount>0)
+            if (slot.transform.childCount <= 0)
             {
-                counter += 1;
+                emptySlot += 1;
             } 
         }
 
-        if (counter == 29)
+        if (emptySlot >= emptyNeeded)
         {
             return true;
         }

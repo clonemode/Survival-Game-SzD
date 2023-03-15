@@ -60,7 +60,7 @@ public class SelectionManager : MonoBehaviour
                 }
             }
 
-            if (interactable && interactable.playerInRange && !InventorySystem.Instance.isOpen && !CraftingSystem.Instance.isOpen)
+            if (interactable && interactable.playerInRange && !InventorySystem.Instance.isOpen && !CraftingSystem.Instance.isOpen && !MenuManager.Instance.isMenuOpen)
             {
                 onTarget = true;
                 selectedObject = interactable.gameObject;

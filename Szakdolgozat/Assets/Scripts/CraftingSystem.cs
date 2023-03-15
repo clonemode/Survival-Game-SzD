@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,7 +22,7 @@ public class CraftingSystem : MonoBehaviour
 
 
     //All Blueprint
-    public ItemBlueprint AxeBLP = new ItemBlueprint("Axe", 2, "Stone", 3, "Stick",3);
+    public ItemBlueprint AxeBLP = new ItemBlueprint("Axe", 1, 2, "Stone", 3, "Stick", 3);
 
     public static CraftingSystem Instance { get; set; }
 
@@ -97,13 +98,13 @@ public class CraftingSystem : MonoBehaviour
             InventorySystem.Instance.RemoveItem(blueprintToCraft.Req1, blueprintToCraft.Req1amount);
             InventorySystem.Instance.RemoveItem(blueprintToCraft.Req2, blueprintToCraft.Req2amount);
         }
-
-        //add item to inventory
-        InventorySystem.Instance.AddToInventory(blueprintToCraft.itemName);
-
+        //Produced the amont of items according to the blueprint
+        for (var i = 0; i < blueprintToCraft.numberOfItemsToProduce; i++)
+        {
+            InventorySystem.Instance.AddToInventory(blueprintToCraft.itemName);
+        }
         //refresh list
         StartCoroutine(calculate());
-
     }
 
     public void RefreshNeededItem()
@@ -131,7 +132,7 @@ public class CraftingSystem : MonoBehaviour
         AxeReq1.text = "3 Stone [" + stone_count + "]";
         AxeReq2.text = "3 Stick [" + stick_count + "]";
 
-        if (stone_count >= 3 && stick_count >= 3)
+        if (stone_count >= 3 && stick_count >= 3 && InventorySystem.Instance.CheckSlotAvailable(1))
         {
             craftAxeBTN.gameObject.SetActive(true);
         }
