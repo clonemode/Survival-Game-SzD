@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEditor;
 using UnityEngine;
+
 
 public class MenuManager : MonoBehaviour
 {
@@ -13,6 +13,7 @@ public class MenuManager : MonoBehaviour
     public GameObject settingsMenu;
     public GameObject menu;
     public bool isMenuOpen;
+
 
     private void Awake()
     {
@@ -58,5 +59,9 @@ public class MenuManager : MonoBehaviour
             //single player
             Time.timeScale = 1f;
         }
+    }
+    public void TempsSaveGame()
+    {
+        SaveManager.Instance.SaveGame();
     }
 }
